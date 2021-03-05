@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Star Wars - Promises</title>
+	</head>
+	<body>
+		<select name="" id="" onchange="loadPerson()">
+			<option value="1">Luke</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
+			<option value="4">4</option>
+			<option value="4q2w3e">4</option>
+		</select>
+
+		<script>
+			async function loadPerson() {
+				const select = document.querySelector("select");
+				const personId = select.value;
+				try {
+					const response = await fetch(
+						`https://swapi.dev/api/people/${personId}`
+					);
+					const person = await response.json();
+					console.log(person);
+				} catch (error) {
+					console.log(error);
+				}
+			}
+		</script>
+	</body>
+</html>
